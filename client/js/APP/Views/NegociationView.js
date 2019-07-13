@@ -1,7 +1,4 @@
-class NegociationView{
-    constructor(elemento){
-        this._elemento = elemento;
-    }
+class NegociationView extends View{
     _template(model){
         return `
     <table class="table table-hover table-bordered">
@@ -41,12 +38,5 @@ class NegociationView{
          </table>
         `;
     }
-
-    update(model){
-        this._elemento.innerHTML = this._template(model);
-
-
-    }
-
 }
 

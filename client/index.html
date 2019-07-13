@@ -10,7 +10,7 @@
 <body class="container">
     
     <h1 class="text-center">Negociações</h1>
-    
+    <div id="mensagemView"></div>
     <form class="form" onsubmit="negociationController.adiciona(event)">
         
         <div class="form-group">
@@ -46,11 +46,15 @@
     <p id="contador">0</p>
     <div id="NegociationView"></div>
 
+    <script src="js/APP/Views/View.js"></script>
     <script src="js/APP/Models/Negociation.js"></script>
     <script src="js/APP/Controllers/NegociationController.js"></script>
     <script src="js/APP/Helpers/DateHelper.js"></script>
     <script src="js/APP/Models/ListaNegociation.js"></script>
     <script src="js/APP/Views/NegociationView.js"></script>
+    <script src="js/APP/Models/Mensage.js"></script>
+    <script src="js/APP/Views/MensageView.js"></script>
+    
     <script>
     "use strict";
     let negociationController = new NegociationController();
