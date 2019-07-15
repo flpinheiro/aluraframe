@@ -11,7 +11,9 @@ class NegociationController{
         this._inputValor = $("#valor");
         this._outPutContador = $("#contador");
         this._contador = 0;
-        this._listaNegociations = new ListaNegociation();
+        this._listaNegociations = new ListaNegociation(
+            model => this._negociationView.update(model)
+        );
         
         this._negociationView = new NegociationView($('#NegociationView'));
         this._negociationView.update(this._listaNegociations);
@@ -34,6 +36,18 @@ class NegociationController{
         this._limpaFormulario();
     }
 
+    apaga (){
+        this._listaNegociations.apaga();
+        this._negociationView.update(this._listaNegociations);
+
+        this._mensage.text = "lista apagada com sucesso";
+        this._mensageView.update(this._mensage);
+
+        this._contador = 0;
+        this._outPutContador.innerHTML = this._contador;
+        this._limpaFormulario();
+    }
+
     _limpaFormulario(){
         this._inputData.value = "";
         this._inputQuantidade.value = 1;
@@ -53,6 +67,5 @@ class NegociationController{
             this._inputQuantidade.value,
             this._inputValor.value
         );
-
     }
 }
