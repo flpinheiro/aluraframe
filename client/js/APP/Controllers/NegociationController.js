@@ -11,37 +11,38 @@ class NegociationController{
         this._inputValor = $("#valor");
         this._outPutContador = $("#contador");
         this._contador = 0;
-        this._listaNegociations = new ListaNegociation(
-            model => this._negociationView.update(model)
-        );
-        
-        this._negociationView = new NegociationView($('#NegociationView'));
-        this._negociationView.update(this._listaNegociations);
 
-        this._mensage = new Mensage();
-        this._mensageView = new MensageView($('#mensagemView'));
-        this._mensageView.update(this._mensage);
+        this._listaNegociations = new Bind(
+                    new ListaNegociation(), 
+                    new NegociationView($('#NegociationView')), 
+                    'adiciona', 'esvazia');
+    
+
+        this._mensage = new Bind( 
+            new Mensage() , 
+            new MensageView($('#mensagemView')), 
+            'texto');
 
     }
 
     adiciona(event){
         event.preventDefault();
         this._listaNegociations.add(this._criaNegociation());
-        this._negociationView.update(this._listaNegociations);
+        // this._negociationView.update(this._listaNegociations);
         
         this._atualizaContador();
         this._mensage.text = 'Negociação adicionada com sucesso';
-        this._mensageView.update(this._mensage);
+        // this._mensageView.update(this._mensage);
 
         this._limpaFormulario();
     }
 
     apaga (){
         this._listaNegociations.apaga();
-        this._negociationView.update(this._listaNegociations);
+        // this._negociationView.update(this._listaNegociations);
 
         this._mensage.text = "lista apagada com sucesso";
-        this._mensageView.update(this._mensage);
+        // this._mensageView.update(this._mensage);
 
         this._contador = 0;
         this._outPutContador.innerHTML = this._contador;
@@ -67,5 +68,6 @@ class NegociationController{
             this._inputQuantidade.value,
             this._inputValor.value
         );
+        
     }
 }
